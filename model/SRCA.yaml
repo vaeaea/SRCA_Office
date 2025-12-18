@@ -1,0 +1,366 @@
+# This is abandoned, needs further tuning if you want to run
+PEMS03:
+  num_nodes: 358
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0005
+  milestones: [25, 30, 35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 5
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 358
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 4
+    topk: 100
+    patch_list: [1]
+    mode: 'WEIGHT'
+
+
+PEMS04:
+  num_nodes: 307
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0005
+  milestones: [20, 25, 30, 35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 10
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 307
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 4
+    topk: 100
+    patch_list: [1]
+    mode: 'WEIGHT'
+
+PEMS08:
+  num_nodes: 170
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.001
+  milestones: [20, 30,35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 5
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 170
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    kernel: 3
+    num_clusters: 3
+    topk: 70
+    patch_list: [1]
+    mode: 'WEIGHT'
+
+
+METRLA:
+  num_nodes: 207
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.7
+  val_size: 0.1
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0003
+  milestones: [ 20, 30, 35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  #clip_grad: 5
+  loss: MAE
+  delta: 1.5
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 207
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 24
+    tod_embedding_dim: 12
+    dow_embedding_dim: 12
+    space_embedding_dim: 12
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 3
+    topk: 80
+    patch_list: [1]
+    mode: 'WEIGHT'
+
+PEMSBAY:
+  num_nodes: 325
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.7
+  val_size: 0.1
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0001
+  milestones: [25, 30, 35, 40, 45, 55]
+  lr_decay_rate: 0.5
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 0.8
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 325
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 12
+    dow_embedding_dim: 12
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 3
+    topk: 120
+    patch_list: [1]
+    mode: 'WEIGHT'
+
+
+PEMS07(L):
+  num_nodes: 1026
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0001
+  milestones: [20, 30, 35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 1.5
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 1026
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 5
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 4
+    topk: 342
+    patch_list: [ 1 ]
+    mode: 'WEIGHT'
+
+PEMS07(M):
+  num_nodes: 228
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.0003
+  milestones: [ 15,20, 25, 35, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 1.5
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 228
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 5
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 32
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 3
+    topk: 80
+    patch_list: [ 1 ]
+    mode: 'WEIGHT'
+
+
+PEMS07:
+  num_nodes: 883
+  in_steps: 12
+  out_steps: 12
+
+  train_size: 0.6
+  val_size: 0.2
+
+  time_of_day: True
+  day_of_week: True
+
+  lr: 0.001
+  weight_decay: 0.001
+  milestones: [20, 30, 40, 45, 55]
+  lr_decay_rate: 0.1
+  batch_size: 16
+  max_epochs: 70
+  early_stop: 5
+  use_cl: False
+  cl_step_size: 2500
+  loss: MAE
+  delta: 10
+  optimizer: multistep
+
+  model_args:
+    num_nodes: 883
+    in_steps: 12
+    out_steps: 12
+    steps_per_day: 288
+    days_per_week: 7
+    input_dim: 1
+    output_dim: 1
+    input_embedding_dim: 32
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    space_embedding_dim: 24
+    feed_forward_dim: 128
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.1
+    num_clusters: 4
+    topk: 240
+    patch_list: [1]
+    mode: 'WEIGHT'
