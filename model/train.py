@@ -14,6 +14,10 @@ from thop import profile
 # 统计flop、gpu、时长
 from torch.cuda.amp import GradScaler
 from torchinfo import summary
+sys.path.append("..")
+from lib.metrics import RMSE_MAE_MAPE, MAE
+from lib.data_prepare import get_dataloaders_from_index_data
+from model.SRCA import SRCA
 from lib.utils import (
     MaskedMAELoss,
     print_log,
@@ -21,10 +25,6 @@ from lib.utils import (
     set_cpu_num,
     CustomJSONEncoder,
 )
-from lib.metrics import RMSE_MAE_MAPE, MAE
-from lib.data_prepare import get_dataloaders_from_index_data
-from model.SRCA import SRCA
-sys.path.append("..")
 
 
 available_models = {
@@ -85,7 +85,6 @@ def predict(model, loader):
 
     return y, out
 
-
 def train_one_epoch(
         model, trainset_loader, valset_loader, optimizer, scheduler, scaler, criterion, clip_grad, log=None, epoch=None
 ):
@@ -99,7 +98,7 @@ def train_one_epoch(
     for x_batch, y_batch in trainset_loader:
         x_batch = x_batch.to(DEVICE)
         y_batch = y_batch.to(DEVICE)
-        # print(type(model).__name__)
+
         if "SRCA" in type(model).__name__:
             out_batch, loss_route = model(x_batch)
         else:
@@ -180,7 +179,6 @@ def train(
     epoch_times = []
 
     # 记录GPU内存使用情况
-    gpu_memory_stats = []
     scaler = GradScaler()
 
     for epoch in range(max_epochs):
@@ -333,7 +331,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--dataset", type=str, default="pems08")
     parser.add_argument("-g", "--gpu_num", type=int, default=0)
-    parser.add_argument('--mode', type=str, default='mean', choices=['mean', 'add'], help='Mode for processing')
     parser.add_argument("--model", type=str, default="STAEformer", help="Model to train")
     parser.add_argument("--if_train", type=int, default=1, help="if train: 1 for train mode, 0 for test mode")
     args = parser.parse_args()
@@ -361,7 +358,6 @@ if __name__ == "__main__":
             with open(f"SRCA.yaml", "r") as f:
                 cfg = yaml.safe_load(f)
             cfg = cfg[dataset]
-            cfg["model_args"]["mode"] = args.mode
             model = model_class(**cfg["model_args"])
         else:
             with open(f"{args.model}.yaml", "r") as f:
@@ -516,7 +512,7 @@ if __name__ == "__main__":
         print_log(f"Loss: {criterion._get_name()}", log=log)
         print_log(log=log)
 
-        model = train(
+        train(
             model,
             trainset_loader,
             valset_loader,

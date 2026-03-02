@@ -1,22 +1,25 @@
 ## Efficient Traffic Flow Forecasting via Sequence-Aware Node Routing and Cluster-Based Spatial Aggregation
  
 <p align="center">
-  <img src="model_arch.png" width="300"  alt="SRCA">
+  <img src="model_arch.png" width="400"  alt="SRCA">
 </p>
 
 #### Performance on Traffic Forecasting Benchmarks   
 
 <p align="center">
 
-  <img src="result_flow.png" width="500"  alt="Performance on Traffic Flow Dateset"> 
+  <img src="result_datasets.png" width="800"  alt="Performance on Traffic Datesets"> 
 
 </p>
 
-<p align="center"> 
+#### Computational Cost between Different Models
 
-  <img src="result_speed.png" width="500"  alt="Performance on Traffic Speed Dateset">
+<p align="center">
+
+  <img src="computation_datasets.png" width="800"  alt="Computational Cost on Traffic Datesets"> 
 
 </p>
+
 #### Required Packages
 
 ```

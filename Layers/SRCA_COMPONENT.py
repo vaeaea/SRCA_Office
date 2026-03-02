@@ -460,8 +460,6 @@ class Spa_Extract_Layer(nn.Module):
     def forward(self, node_routing, tem_routing):
         # 计算路由和节点信息间的相似度
         # 结合时间信息进行路由中心初始化
-        node_routing = node_routing.squeeze(1)
-
         B, T, C, D = node_routing.shape
         R = self.route_num
         K = self.topk
@@ -471,7 +469,7 @@ class Spa_Extract_Layer(nn.Module):
 
         # 计算路由和各个node_info间的相似度
         node_routing_center = self.node_routing_fusion(node_routing_center)
-        route_similarity = torch.softmax(torch.einsum('bcd,brd->brc', node_routing, node_routing_center), dim=2)  # [B,R,C]
+        route_similarity = torch.softmax(torch.einsum('bcd,brd->brc', node_routing.squeeze(1), node_routing_center), dim=2)  # [B,R,C]
         loss_center = cross_entropy_max_distance(node_routing_center)
 
         # 根据相似度，对节点分类，找出每个路由对应的topk个节点

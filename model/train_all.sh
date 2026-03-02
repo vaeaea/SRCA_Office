@@ -27,21 +27,18 @@ source activate tslib
 # "PEMS04"  "PEMS07(M)" "PEMS07(L)" "METRLA" "PEMSBAY"
 # "PEMS03" "PEMS04"  "PEMS08" "PEMS07(M)" "METRLA"
 # "PEMS07" "PEMS07(L)"
-datasets=("PEMS07(L)")
-modes=("WEIGHT")
+datasets=("PEMS08" "PEMS04" "PEMS07(M)" "PEMS07(L)" "METRLA" "PEMSBAY" "PEMS07")
 #  "SRCA_abla4"   "SRCA_abla1" "SRCA_abla2" "SRCA_abla3" "SRCA_abla5" "SRCA_abla6" "SRCA_abla7" "SRCA_abla8" "SRCA_abla9"  "SRCA_abla10" "SRCA_abla11" "SRCA_abla12"
-models=("SRCA_abla1" "SRCA_abla2" "SRCA_abla3" "SRCA_abla5" "SRCA_abla6" "SRCA_abla7" "SRCA_abla8" "SRCA_abla9"  "SRCA_abla10" "SRCA_abla11" "SRCA_abla12")  # 添加更多模型
+models=("SRCA")  # 添加更多模型
 
 for dataset in "${datasets[@]}"; do
   for model in "${models[@]}"; do  # 遍历不同模型
-      for mode in "${modes[@]}"; do
-            echo "Training on $dataset with mode=$mode using $model..."
-            python train.py -d $dataset -g 0 --mode $mode --model $model
-            if [ $? -eq 0 ]; then
-                echo "Successfully trained on $dataset with mode=$mode using $model"
-            else
-                echo "Error training on $dataset with mode=$mode using $model"
-            fi
-        done
+      echo "Training on $dataset using $model..."
+      python train.py -d $dataset -g 0 --model $model
+      if [ $? -eq 0 ]; then
+          echo "Successfully trained on $dataset using $model"
+      else
+          echo "Error training on $dataset using $model"
+      fi
     done
 done

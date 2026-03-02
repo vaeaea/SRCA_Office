@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torchinfo import summary
 
-from Layers.SRCA_COMPONENT import Spa_Extract_Layer, Tem_Extract_Layer, Spa_Propagate_Layer
+from Layers.SRCA_COMPONENT import Spa_Extract_Layer, Tem_Extract_Layer, Spa_Propagate_Layer, SelfAttentionLayer
 
 
 class SRCA(nn.Module):
@@ -26,7 +26,6 @@ class SRCA(nn.Module):
             num_clusters=4,
             topk=70,
             patch_list=[1],
-            mode='WEIGHT'
     ):
         super().__init__()
 
@@ -41,7 +40,6 @@ class SRCA(nn.Module):
         self.tod_embedding_dim = tod_embedding_dim
         self.dow_embedding_dim = dow_embedding_dim
         self.space_embedding_dim = space_embedding_dim
-        self.mode = mode
         self.model_dim = (
                 input_embedding_dim
                 + tod_embedding_dim
@@ -101,16 +99,17 @@ class SRCA(nn.Module):
         )
         self.w_cat = nn.Linear(self.num_layers, 1, bias=False)
 
-        self.output_proj_all = nn.Linear(
+        self.output_proj = nn.Linear(
             (self.in_steps + 1) * self.model_dim, out_steps * output_dim
         )
+
 
     def forward(self, x, epoch=None):
         # x: (batch_size, in_steps, num_nodes, input_dim+tod+dow=3)
         B = x.shape[0]
 
-        tod = x[..., 1]
-        dow = x[..., 2]
+        tod = x[..., 1]  # [B,T,C]
+        dow = x[..., 2]  # [B,T,C]
         x = x[..., : self.input_dim]  # [B,T,C,D]
 
         # 生成节点路由
@@ -124,10 +123,7 @@ class SRCA(nn.Module):
         x = self.input_proj(x.permute(0, 3, 1, 2)).permute(0, 2, 3, 1)
         tem_emb = self.tem_embedding_pool[(tod * self.steps_per_day + dow * self.steps_per_day).long()]
         adp_emb = self.spa_embedding_pool[:-1].expand(size=(B, *self.spa_embedding_pool[:-1].shape))
-        features = [x]
-        features.append(tem_emb)
-        features.append(adp_emb)
-        x = torch.cat([features[0], features[1], features[2]], dim=-1)
+        x = torch.cat([x, tem_emb, adp_emb], dim=-1)
 
         x_list = []
         node_routing_list = []
@@ -156,10 +152,9 @@ class SRCA(nn.Module):
         out = out.reshape(
             B, self.num_nodes, (self.in_steps + 1) * self.model_dim
         )
-        out = self.output_proj_all(out).view(
+        out = self.output_proj(out).view(
             B, self.num_nodes, self.out_steps, self.output_dim
         )
-
         out = out.transpose(1, 2)  # (batch_size, out_steps, num_nodes, output_dim)
 
         return out, loss_contrast

@@ -22,6 +22,7 @@ PEMS03:
   loss: MAE
   delta: 5
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 358
@@ -42,7 +43,7 @@ PEMS03:
     num_clusters: 4
     topk: 100
     patch_list: [1]
-    mode: 'WEIGHT'
+    
 
 
 PEMS04:
@@ -68,6 +69,7 @@ PEMS04:
   loss: MAE
   delta: 10
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 307
@@ -88,7 +90,7 @@ PEMS04:
     num_clusters: 4
     topk: 100
     patch_list: [1]
-    mode: 'WEIGHT'
+    
 
 PEMS08:
   num_nodes: 170
@@ -113,6 +115,7 @@ PEMS08:
   loss: MAE
   delta: 5
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 170
@@ -130,11 +133,10 @@ PEMS08:
     num_heads: 4
     num_layers: 2
     dropout: 0.1
-    kernel: 3
     num_clusters: 3
     topk: 70
     patch_list: [1]
-    mode: 'WEIGHT'
+    
 
 
 METRLA:
@@ -161,6 +163,7 @@ METRLA:
   loss: MAE
   delta: 1.5
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 207
@@ -181,7 +184,7 @@ METRLA:
     num_clusters: 3
     topk: 80
     patch_list: [1]
-    mode: 'WEIGHT'
+    
 
 PEMSBAY:
   num_nodes: 325
@@ -206,6 +209,7 @@ PEMSBAY:
   loss: MAE
   delta: 0.8
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 325
@@ -226,7 +230,7 @@ PEMSBAY:
     num_clusters: 3
     topk: 120
     patch_list: [1]
-    mode: 'WEIGHT'
+    
 
 
 PEMS07(L):
@@ -252,6 +256,7 @@ PEMS07(L):
   loss: MAE
   delta: 1.5
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 1026
@@ -272,7 +277,7 @@ PEMS07(L):
     num_clusters: 4
     topk: 342
     patch_list: [ 1 ]
-    mode: 'WEIGHT'
+    
 
 PEMS07(M):
   num_nodes: 228
@@ -297,6 +302,7 @@ PEMS07(M):
   loss: MAE
   delta: 1.5
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 228
@@ -317,7 +323,7 @@ PEMS07(M):
     num_clusters: 3
     topk: 80
     patch_list: [ 1 ]
-    mode: 'WEIGHT'
+    
 
 
 PEMS07:
@@ -343,6 +349,7 @@ PEMS07:
   loss: MAE
   delta: 10
   optimizer: multistep
+  
 
   model_args:
     num_nodes: 883
@@ -363,4 +370,4 @@ PEMS07:
     num_clusters: 4
     topk: 240
     patch_list: [1]
-    mode: 'WEIGHT'
+    
