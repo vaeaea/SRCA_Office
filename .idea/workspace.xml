@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b04483da-ae7e-4a4c-b5a6-0a084bf65703" name="更改" comment="update vision.ipynb">
-      <change afterPath="$PROJECT_DIR$/.idea/SRCA_Office.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b04483da-ae7e-4a4c-b5a6-0a084bf65703" name="更改" comment="update README">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/vision.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/model/vision.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +70,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.29346.308" />
-        <option value="bundled-python-sdk-ca5e2b39c7df-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.308" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -92,7 +87,11 @@
       <workItem from="1772433332601" duration="1482000" />
       <workItem from="1772435027763" duration="764000" />
       <workItem from="1772435845916" duration="490000" />
-      <workItem from="1772512741773" duration="26000" />
+      <workItem from="1772512741773" duration="203000" />
+      <workItem from="1772512966141" duration="2602000" />
+      <workItem from="1772532998034" duration="2343000" />
+      <workItem from="1774234015183" duration="37000" />
+      <workItem from="1774234365271" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -150,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772436192709</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update README">
+      <option name="closed" value="true" />
+      <created>1772512850153</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772512850153</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +192,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.gitignore" />
     <MESSAGE value="update ignore and README" />
     <MESSAGE value="update vision.ipynb" />
-    <option name="LAST_COMMIT_MESSAGE" value="update vision.ipynb" />
+    <MESSAGE value="update README" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README" />
   </component>
 </project>
